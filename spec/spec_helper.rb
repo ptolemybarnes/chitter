@@ -1,6 +1,7 @@
 require 'capybara/rspec'
 require './app/app'
 require 'database_cleaner'
+require 'factory_girl'
 
 ENV['RACK_ENV'] = 'test'
 
@@ -24,6 +25,7 @@ RSpec.configure do |config|
    config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    FactoryGirl.lint
   end
 
   config.before(:each) do

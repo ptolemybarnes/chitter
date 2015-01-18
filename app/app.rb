@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'slim'
 require 'data_mapper'
+require 'bcrypt'
 
 require_relative './data_mapper_setup'
 require_relative './views/init'

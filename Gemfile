@@ -19,4 +19,5 @@ end
 group :test do
   gem 'rspec'
   gem 'capybara'
+  gem 'factory_girl', "~> 4.0"
 end
