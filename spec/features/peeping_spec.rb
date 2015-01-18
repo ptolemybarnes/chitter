@@ -26,6 +26,14 @@ feature 'peeps are viewable' do
     expect(page).to have_content("by Simon")
   end
 
+  scenario 'in chronological order' do
+    create(:a_peep, text: first  = "I am the alpha.")
+    create(:a_peep, text: second = "I am the omega.")
+
+    visit '/'
+    
+    expect(page.all('.peeps').map(&:text)).to eq([first, second])
+  end
 end
 
 def signin_as user

@@ -3,8 +3,6 @@ require './spec/factories'
 
 describe Peep, '.create' do
 
-
-
   it 'creates peep with a message' do
     peep = Peep.create(text: "Hello, World!", user: build_stubbed(:a_user))
 
@@ -20,6 +18,12 @@ describe Peep, '.create' do
     expect(peep.user_id).to eq(oz_the_user.id)
   end
 
+  it 'creates peep with a time of its creation' do
+    time, peep = Time.now, create(:a_peep)
+
+    expect(peep.peeptime).to eq time
+  end
+
   it 'does not save a peep that is an empty string' do
     peep = Peep.create(text:"", user: build_stubbed(:a_user))
 
@@ -27,9 +31,9 @@ describe Peep, '.create' do
   end
 
   it 'does not save a peep that is too long' do
-    long_tweet = ("I love repetition" * 10)
+    long_peep = ("I love repetition" * 10)
     
-    peep = Peep.create(text: long_tweet, user: build_stubbed(:a_user))
+    peep = Peep.create(text: long_peep, user: build_stubbed(:a_user))
 
     expect(peep.saved?).to eq false
   end
