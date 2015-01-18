@@ -8,6 +8,6 @@ FactoryGirl.define do
 
   factory :a_peep, class: Peep do
     text "Hello, World!"
-    a_user
+    user { create(:a_user) }
   end
 end

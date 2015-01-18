@@ -16,8 +16,12 @@ end
 feature 'peeps are viewable' do
 
   scenario 'when on the homepage' do
-    # create()
+    peep = "Colorless green ideas sleep furiously."
+    create(:a_peep, text: peep)
 
+    visit '/'
+
+    expect(page).to have_content(peep)
   end
 
 end
