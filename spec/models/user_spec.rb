@@ -28,3 +28,20 @@ describe User, '.signup' do
     details[:name] = "Tom"
   end
 end
+
+describe User, '.signin' do
+
+  scenario "signs in existing user" do
+    oz_the_user = create(:oz_the_user)
+
+    user = User.signin(name: "Oz", password: "secret")
+
+    expect(user.email).to eq(oz_the_user.email)
+  end
+end
+
+
+
+
+
+
