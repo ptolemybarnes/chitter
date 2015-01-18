@@ -5,6 +5,8 @@ require 'factory_girl'
 require './app/app'
 require 'rspec'
 
+require_relative './support/factory_girl'
+
 ENV['RACK_ENV'] = 'test'
 
 Capybara.app = Chitter
@@ -32,6 +34,7 @@ RSpec.configure do |config|
 
   config.before(:each) do
     DatabaseCleaner.start
+    FactoryGirl.lint
   end
 
   config.after(:each) do
