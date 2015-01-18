@@ -11,6 +11,12 @@ feature 'user posts a peep' do
     expect(page).to have_content('Hello, World')
     expect(page).to have_content('peeped by Oz')
   end
+
+  scenario 'when not logged in, they are redirected to signin page' do
+    visit '/peep/new'
+
+    expect(page).to have_content('Sign-in:')
+  end
 end
 
 feature 'peeps are viewable' do

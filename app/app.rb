@@ -21,6 +21,7 @@ class Chitter < Sinatra::Base
   end
 
   get '/peep/new' do
+    redirect to('/user/signin') unless session[:id]
     slim :"peep/new"
   end
 
@@ -56,7 +57,5 @@ class Chitter < Sinatra::Base
     session.clear
     "Goodbye, #{user.name}!"
   end
-
-
 
 end

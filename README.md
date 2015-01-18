@@ -18,4 +18,5 @@ Chitter is a clone of twitter, allowing users to post messages to a public strea
 
 ##Reflections
 The instruction for this project was to keep it as simple and straightforward as possible, to treat it as a consolidation of what we had learned over Week 4 at Makers Academy with regard to databases. I felt, however, that I had neglected some of the lessons I had learned about TDD while trying to absorb the new concepts and syntax.
+
 For this project then, I tried to think about and adhere to best practices for testing. In particular, ensuring that each module of the programme, be it a controller or model, be tested in isolation. Through this I learned about FactoryGirl, a gem for DRYing out test code by allowing you to quickly set up the environment for a test with the necessary data.
