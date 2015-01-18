@@ -25,7 +25,8 @@ class Chitter < Sinatra::Base
   end
 
   post '/user/signin' do
-    "Welcome back, Oz!"
+    user = User.signin(params)
+    "Welcome back, #{user.name}!"
   end
 
   get '/user/signup' do
