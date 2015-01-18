@@ -15,7 +15,7 @@ end
 
 feature 'peeps are viewable' do
 
-  scenario 'when on the homepage' do
+  scenario 'on the homepage' do
     peep = "Colorless green ideas sleep furiously."
     create(:a_peep, text: peep)
 

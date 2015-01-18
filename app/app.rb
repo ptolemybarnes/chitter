@@ -15,6 +15,10 @@ class Chitter < Sinatra::Base
   enable :sessions
   set :session_secret, 'super_secret'
 
+  get '/' do
+    slim :"peep/view"
+  end
+
   get '/peep/new' do
     slim :"peep/new"
   end
