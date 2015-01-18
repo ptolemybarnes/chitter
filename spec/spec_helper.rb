@@ -1,7 +1,9 @@
 require 'capybara/rspec'
-require './app/app'
 require 'database_cleaner'
 require 'factory_girl'
+
+require './app/app'
+require 'rspec'
 
 ENV['RACK_ENV'] = 'test'
 
