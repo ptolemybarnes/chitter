@@ -50,4 +50,13 @@ class Chitter < Sinatra::Base
       "#{user.name}, you are now a Chitterer!"
     end
   end
+
+  get '/user/signout' do
+    user = User.first(id: session[:id])
+    session.clear
+    "Goodbye, #{user.name}!"
+  end
+
+
+
 end

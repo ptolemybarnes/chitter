@@ -13,7 +13,7 @@ feature 'new user can sign up' do
   end
 end
 
-feature 'existing user can log in' do
+feature 'existing user can sign in' do
 
   scenario 'when he or she visits the site' do
     oz_the_user = create(:a_user, name: "Oz")
@@ -24,5 +24,17 @@ feature 'existing user can log in' do
     click_button 'Login'
 
     expect(page).to have_content('Welcome back, Oz!')
+  end
+end
+
+feature 'user can sign out' do
+
+  scenario 'after he or she has signed in' do
+    user = create(:a_user)
+    signin_as user
+
+    visit '/user/signout'
+
+    expect(page).to have_content("Goodbye, #{user.name}!")
   end
 end

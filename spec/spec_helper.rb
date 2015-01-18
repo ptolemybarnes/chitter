@@ -1,11 +1,13 @@
 require 'capybara/rspec'
 require 'database_cleaner'
 require 'factory_girl'
-
 require './app/app'
 require 'rspec'
 
 require_relative './support/factory_girl'
+require_relative './support/helper_methods'
+
+include HelperMethods
 
 ENV['RACK_ENV'] = 'test'
 
