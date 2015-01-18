@@ -12,12 +12,17 @@ class Chitter < Sinatra::Base
   set :public_dir, Proc.new{File.join(root, '..', "public")}
   set :public_folder, 'public'
 
+  enable :sessions
+  set :session_secret, 'super_secret'
+
   get '/peep/new' do
     slim :"peep/new"
   end
 
   post '/peep/new' do
-    "Hello, World!"
+    user = User.first(id: session[:id])
+    peep = Peep.create(params.symbolize_keys.merge(user: user))
+    "#{peep.text}, peeped by #{peep.user.name}"
   end
 
   get '/user/signin' do
@@ -25,7 +30,9 @@ class Chitter < Sinatra::Base
   end
 
   post '/user/signin' do
-    user = User.signin(params)
+            user = User.authenticate(params)
+    session[:id] = user.id
+
     "Welcome back, #{user.name}!"
   end
 

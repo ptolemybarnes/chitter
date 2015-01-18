@@ -16,7 +16,7 @@ class User
     self.password_digest = BCrypt::Password.create(password)
   end
 
-  def self.signin(details)
+  def self.authenticate(details)
     user = first(:name => details[:name])
 
     if user && BCrypt::Password.new(user.password_digest) == details[:password]
