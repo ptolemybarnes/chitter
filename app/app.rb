@@ -20,6 +20,14 @@ class Chitter < Sinatra::Base
     "Hello, World!"
   end
 
+  get '/user/signin' do
+    slim :"user/signin"
+  end
+
+  post '/user/signin' do
+    "Welcome back, Oz!"
+  end
+
   get '/user/signup' do
     slim :"user/signup"
   end
