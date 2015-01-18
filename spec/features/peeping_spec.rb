@@ -1,7 +1,7 @@
 feature 'user posts a peep' do
 
   scenario 'when user is logged in' do
-    oz_the_user = create(:oz_the_user)
+    oz_the_user = create(:a_user, name: "Oz")
     signin_as oz_the_user
 
     visit '/peep/new'
@@ -11,6 +11,15 @@ feature 'user posts a peep' do
     expect(page).to have_content('Hello, World')
     expect(page).to have_content('peeped by Oz')
   end
+end
+
+feature 'peeps are viewable' do
+
+  scenario 'when on the homepage' do
+    # create()
+
+  end
+
 end
 
 def signin_as user

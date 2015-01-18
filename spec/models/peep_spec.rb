@@ -10,7 +10,7 @@ describe Peep, '.create' do
   end
 
   it 'creates peep with an author' do
-    oz_the_user = build_stubbed(:oz_the_user)
+    oz_the_user = build_stubbed(:a_user, name: "Oz")
 
     peep = Peep.create(text:"Hello, World", user: oz_the_user)
 

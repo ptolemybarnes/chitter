@@ -16,7 +16,7 @@ end
 feature 'existing user can log in' do
 
   scenario 'when he or she visits the site' do
-    oz_the_user = create(:oz_the_user)
+    oz_the_user = create(:a_user, name: "Oz")
     visit '/user/signin'
 
     fill_in 'name'    , with: "Oz"

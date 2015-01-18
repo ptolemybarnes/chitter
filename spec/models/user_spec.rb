@@ -32,9 +32,9 @@ end
 describe User, '.signin' do
 
   scenario "signs in existing user" do
-    loki_the_user = create(:loki_the_user)
+    loki_the_user = create(:a_user, name: "Loki")
 
-    user = User.authenticate(name: "Loki", password: "secret")
+    user = User.authenticate(name: "Loki", password: loki_the_user.password)
 
     expect(user).to eq(loki_the_user)
   end

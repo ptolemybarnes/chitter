@@ -1,15 +1,13 @@
 FactoryGirl.define do
-  factory :oz_the_user, class: User do
+  factory :a_user, class: User do
     name "Oz"
-    email "oz@wizard.com"
+    email { "#{name}@email.com" }
     password "secret"
-    password_confirmation "secret"
+    password_confirmation { "#{password}" }
   end
 
-  factory :loki_the_user, class: User do
-    name "Loki"
-    email "loki@azgard.com"
-    password "secret"
-    password_confirmation "secret"
+  factory :a_peep, class: Peep do
+    text "Hello, World!"
+    a_user
   end
 end
