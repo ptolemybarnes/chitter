@@ -16,13 +16,12 @@ end
 feature 'peeps are viewable' do
 
   scenario 'on the homepage' do
-    peep  = "Colorless green ideas sleep furiously."
     simon = build_stubbed(:a_user, name: "Simon")
-    create(:a_peep, text: peep, user: simon)
+    create(:a_peep, text: "Colorless green ideas sleep furiously.", user: simon)
 
     visit '/'
 
-    expect(page).to have_content(peep)
+    expect(page).to have_content("Colorless green ideas sleep furiously.")
     expect(page).to have_content("by Simon")
   end
 
@@ -31,7 +30,7 @@ feature 'peeps are viewable' do
     create(:a_peep, text: second = "I am the omega.")
 
     visit '/'
-    
+
     expect(page.all('.peeps').map(&:text)).to eq([first, second])
   end
 end

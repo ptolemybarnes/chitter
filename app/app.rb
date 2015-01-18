@@ -1,6 +1,7 @@
 require 'sinatra/base'
 require 'slim'
 require 'data_mapper'
+
 require 'bcrypt'
 require 'byebug'
 

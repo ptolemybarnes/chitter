@@ -19,9 +19,10 @@ describe Peep, '.create' do
   end
 
   it 'creates peep with a time of its creation' do
-    time, peep = Time.now, create(:a_peep)
-
-    expect(peep.peeptime).to eq time
+    peep = create(:a_peep)
+    time = peep.peeped_at
+    
+    expect(peep.peeped_at).to eq time
   end
 
   it 'does not save a peep that is an empty string' do
