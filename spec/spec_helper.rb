@@ -3,6 +3,7 @@ require 'database_cleaner'
 require 'factory_girl'
 require './app/app'
 require 'rspec'
+require 'rack/test'
 
 require_relative './support/factory_girl'
 require_relative './support/helper_methods'
@@ -14,6 +15,7 @@ ENV['RACK_ENV'] = 'test'
 Capybara.app = Chitter
 
 RSpec.configure do |config|
+  Rack::Test::Methods
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.

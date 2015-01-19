@@ -17,6 +17,7 @@ group :development do
 end
 
 group :test do
+  gem 'rack-test'
   gem 'rspec'
   gem 'capybara'
   gem 'factory_girl', "~> 4.0"

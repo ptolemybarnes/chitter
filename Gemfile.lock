@@ -134,9 +134,10 @@ DEPENDENCIES
   data_mapper
   database_cleaner
   dm-postgres-adapter
-  factory_girl
+  factory_girl (~> 4.0)
   launchy
   rack-flash3
+  rack-test
   rest-client
   rspec
   sinatra
