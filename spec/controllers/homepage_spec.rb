@@ -7,7 +7,7 @@ describe 'index page' do
   context 'when visitor is not logged in' do
     
     it 'they see login options' do
-      visit '/'
+      get '/'
 
       expect(last_response.body).to match /Sign-in:/
     end
