@@ -8,6 +8,7 @@ group :production do
   gem 'data_mapper'
   gem 'dm-postgres-adapter'
   gem 'rest-client'
+  gem 'sinatra-contrib'
 end
 
 group :development do
@@ -21,4 +22,5 @@ group :test do
   gem 'rspec'
   gem 'capybara'
   gem 'factory_girl', "~> 4.0"
+  gem 'airborne'
 end

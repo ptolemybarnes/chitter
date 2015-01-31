@@ -4,6 +4,7 @@ require 'factory_girl'
 require './app/app'
 require 'rspec'
 require 'rack/test'
+require 'airborne'
 
 require_relative './support/factory_girl'
 require_relative './support/helper_methods'
@@ -19,6 +20,11 @@ RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
+  
+  Airborne.configure do |config|
+    config.rack_app = Chitter
+  end
+
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
