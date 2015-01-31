@@ -1,5 +1,6 @@
 require 'factory_girl'
 require './spec/factories'
+require 'json'
 
 describe 'User information' do
 

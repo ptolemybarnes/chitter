@@ -24,7 +24,8 @@ class Chitter < Sinatra::Base
 
   get '/api/users/:name' do
     user = User.first(:name => params[:name])
-    json :name => user.name, :email => user.email
+
+    json :name => user.name, :email => user.email, :peeps => user.peeps
   end
 
 end
