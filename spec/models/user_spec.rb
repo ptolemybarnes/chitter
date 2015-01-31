@@ -40,6 +40,17 @@ describe User, '.signin' do
   end
 end
 
+describe User do
+
+  scenario "has peeps" do
+    bernard_the_user = create(:a_user, name: "Bernard")
+    
+    first_peep       = create(:a_peep, user: bernard_the_user, text: "Hello, World!")
+
+    expect(bernard_the_user.peeps).to eq([first_peep])
+  end
+end
+
 
 
 
