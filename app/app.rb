@@ -31,10 +31,16 @@ class Chitter < Sinatra::Base
     json :name => user.name, :email => user.email, :peeps => peeps_url_array
   end
 
+  post '/api/users/new' do
+    User.signup(params)
+  end
+
   get'/api/peeps/:id' do
     peep = Peep.first(:id => params[:id])
 
     json :text => peep.text, peeped_at: peep.peeped_at, id: peep.id, author: peep.user.name
   end
+
+
 
 end
