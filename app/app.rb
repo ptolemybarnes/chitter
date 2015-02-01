@@ -39,6 +39,14 @@ class Chitter < Sinatra::Base
     end
   end
 
+  post '/api/users/authenticate' do
+    if (user = User.authenticate(params))
+      json message: "Welcome back #{user.name}!"
+    else
+      json error: "Username/password incorrect"
+    end
+  end
+
   get'/api/peeps/:id' do
     if (peep = Peep.first(:id => params[:id]))
       json :text => peep.text, peeped_at: peep.peeped_at, id: peep.id, author: peep.user.name
@@ -51,7 +59,5 @@ class Chitter < Sinatra::Base
     author = User.first(id: params[:author_id])
     Peep.create(text: params[:text], user: author)
   end
-
-
 
 end

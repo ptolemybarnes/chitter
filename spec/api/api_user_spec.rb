@@ -29,7 +29,15 @@ describe 'User API' do
 
   describe 'takes requests' do
 
-    it 'and creates new user' do
+    it 'that return authentication confirmation when password is correct' do
+      john = create(:a_user, name: "John", password: "secret")
+
+      post 'http://localhost.com:9292/api/users/authenticate', {name: "John", password: "secret"}
+
+      expect_json({message: 'Welcome back John!'})
+    end
+
+    it 'to create new user' do
       tom_the_user_info = {name: "Tom", email: "tom@gmail.com", password: "secret", password_confirmation: "secret"}
 
       post 'http://localhost.com:9292/api/users/new', tom_the_user_info
@@ -37,7 +45,7 @@ describe 'User API' do
       expect(User.first( name: "Tom")).to_not eq(nil)
     end
 
-    it 'and returns error message if passwords do not match' do
+    it 'and returns error message if new users passwords do not match' do
       tom_the_user = {name: "Tom", email: "tom@gmail.com", password: "secret", password_confirmation: "mistake"}
 
       post 'http://localhost.com:9292/api/users/new', tom_the_user
