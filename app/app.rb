@@ -25,10 +25,12 @@ class Chitter < Sinatra::Base
   # API
 
   get '/api/users/:name' do
-    user            = User.first(:name => params[:name])
-    peeps_url_array = user.peeps.map {|peep| "http://localhost:9292/api/peeps/" + peep.id.to_s }
-
-    json :name => user.name, :email => user.email, :peeps => peeps_url_array
+    if (user            = User.first(:name => params[:name]))
+      peeps_url_array = user.peeps.map {|peep| "http://localhost:9292/api/peeps/" + peep.id.to_s }
+      json :name => user.name, :email => user.email, :peeps => peeps_url_array, error: nil
+    else
+      json error: "#{params[:name]} is not a Chitterer!"
+    end
   end
 
   post '/api/users/new' do

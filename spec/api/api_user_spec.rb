@@ -19,6 +19,12 @@ describe 'User API' do
       expect_json({peeps: ["http://localhost:9292/api/peeps/" + peep.id.to_s]})
     end
 
+    it 'which contains error message if user does not exist' do
+      get 'http://localhost.com:9292/api/users/Patrick'
+
+      expect_json({error: "Patrick is not a Chitterer!"})
+    end
+
   end
 
   describe 'takes requests' do
