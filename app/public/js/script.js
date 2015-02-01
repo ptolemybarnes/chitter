@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  $('#signupform').submit(function( event ) {
-    
+  $('#signinform').submit(function( event ) {
+    console.log(event.data)
   });
 });

@@ -10,9 +10,8 @@ require_relative './data_mapper_setup'
 require_relative './helpers/init'
 
 class Chitter < Sinatra::Base
-  set :root, File.dirname(__FILE__) # sets app/. as the default route.
-  set :public_dir, Proc.new{File.join(root, '..', "public")}
-  set :public_folder, 'public'
+  set :root, File.dirname(__FILE__)
+  set :public_dir, Proc.new{File.join(root, "/public")}
   helpers Sinatra::JSON
 
   enable :sessions
