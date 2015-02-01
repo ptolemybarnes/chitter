@@ -25,8 +25,9 @@ class Chitter < Sinatra::Base
   # API
 
   get '/api/users/:name' do
-    if (user            = User.first(:name => params[:name]))
+    if (user = User.first(:name => params[:name]))
       peeps_url_array = user.peeps.map {|peep| "http://localhost:9292/api/peeps/" + peep.id.to_s }
+      
       json :name => user.name, :email => user.email, :peeps => peeps_url_array, error: nil
     else
       json error: "#{params[:name]} is not a Chitterer!"
@@ -34,16 +35,22 @@ class Chitter < Sinatra::Base
   end
 
   post '/api/users/new' do
-    user = User.signup(params)
-    unless user.saved?
+    unless User.signup(params).saved?
       json error: 'The passwords did not match'
     end
   end
 
   get'/api/peeps/:id' do
-    peep = Peep.first(:id => params[:id])
+    if (peep = Peep.first(:id => params[:id]))
+      json :text => peep.text, peeped_at: peep.peeped_at, id: peep.id, author: peep.user.name
+    else
+      json error: "The peep requested does not exist"
+    end
+  end
 
-    json :text => peep.text, peeped_at: peep.peeped_at, id: peep.id, author: peep.user.name
+  post '/api/peeps/new' do
+    author = User.first(id: params[:author_id])
+    Peep.create(text: params[:text], user: author)
   end
 
 

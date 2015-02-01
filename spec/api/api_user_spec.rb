@@ -30,9 +30,9 @@ describe 'User API' do
   describe 'takes requests' do
 
     it 'and creates new user' do
-      tom_the_user = {name: "Tom", email: "tom@gmail.com", password: "secret", password_confirmation: "secret"}
+      tom_the_user_info = {name: "Tom", email: "tom@gmail.com", password: "secret", password_confirmation: "secret"}
 
-      post 'http://localhost.com:9292/api/users/new', tom_the_user
+      post 'http://localhost.com:9292/api/users/new', tom_the_user_info
 
       expect(User.first( name: "Tom")).to_not eq(nil)
     end
