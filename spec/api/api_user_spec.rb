@@ -14,7 +14,7 @@ describe 'User API' do
 
     get 'http://localhost.com:9292/api/users/Bernard'
 
-    expect_json_types({peeps: :array})
+    expect_json({peeps: ["http://localhost:9292/api/peeps/" + peep.id.to_s]})
   end
 
 end

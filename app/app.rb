@@ -25,15 +25,16 @@ class Chitter < Sinatra::Base
   # API
 
   get '/api/users/:name' do
-    user = User.first(:name => params[:name])
+    user            = User.first(:name => params[:name])
+    peeps_url_array = user.peeps.map {|peep| "http://localhost:9292/api/peeps/" + peep.id.to_s }
 
-    json :name => user.name, :email => user.email, :peeps => user.peeps
+    json :name => user.name, :email => user.email, :peeps => peeps_url_array
   end
 
   get'/api/peeps/:id' do
     peep = Peep.first(:id => params[:id])
 
-    json :text => peep.text, peeped_at: peep.peeped_at
+    json :text => peep.text, peeped_at: peep.peeped_at, id: peep.id, author: peep.user.name
   end
 
 end
