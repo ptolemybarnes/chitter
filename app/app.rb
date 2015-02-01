@@ -22,10 +22,18 @@ class Chitter < Sinatra::Base
     slim :index
   end
 
+  # API
+
   get '/api/users/:name' do
     user = User.first(:name => params[:name])
 
     json :name => user.name, :email => user.email, :peeps => user.peeps
+  end
+
+  get'/api/peeps/:id' do
+    peep = Peep.first(:id => params[:id])
+
+    json :text => peep.text, peeped_at: peep.peeped_at
   end
 
 end

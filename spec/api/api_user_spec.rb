@@ -1,10 +1,6 @@
-require 'factory_girl'
-require './spec/factories'
-require 'json'
+describe 'User API' do
 
-describe 'User information' do
-
-  it 'is returned as json object' do
+  it 'is returned as JSON object' do
     user = create(:a_user, name: "Oz")
     
     get 'http://localhost.com:9292/api/users/Oz'
@@ -12,7 +8,7 @@ describe 'User information' do
     expect_json({:name => "Oz", :email => "Oz@email.com"})
   end
 
-  it 'includes user peeps' do
+  it 'includes links to peeps' do
     bernard = create(:a_user, name: 'Bernard')
     peep    = create(:a_peep, user: bernard, text: "Hello, World!")
 

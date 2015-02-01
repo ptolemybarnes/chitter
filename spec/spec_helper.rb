@@ -5,6 +5,7 @@ require './app/app'
 require 'rspec'
 require 'rack/test'
 require 'airborne'
+require 'json'
 
 require_relative './support/factory_girl'
 require_relative './support/helper_methods'
