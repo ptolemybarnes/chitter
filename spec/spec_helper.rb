@@ -1,4 +1,5 @@
 require 'capybara/rspec'
+require 'capybara/webkit/matchers'
 require 'database_cleaner'
 require 'factory_girl'
 require './app/app'
@@ -6,6 +7,8 @@ require 'rspec'
 require 'rack/test'
 require 'airborne'
 require 'json'
+require 'capybara-webkit'
+
 
 require_relative './support/factory_girl'
 require_relative './support/helper_methods'
@@ -14,7 +17,13 @@ include HelperMethods
 
 ENV['RACK_ENV'] = 'test'
 
-Capybara.app = Chitter
+
+Capybara.configure do |config|
+  config.app = Chitter
+  config.automatic_reload = false
+end
+
+Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
   Rack::Test::Methods

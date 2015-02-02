@@ -41,6 +41,7 @@ class Chitter < Sinatra::Base
 
   post '/api/users/authenticate' do
     if (user = User.authenticate(params))
+      session[:id] = user.id
       json message: "Welcome back #{user.name}!"
     else
       json error: "Username/password incorrect"
