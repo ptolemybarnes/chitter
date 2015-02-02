@@ -1,3 +1,7 @@
 section#signupform {
   visibility: hidden;
 }
+
+div#userservices-bar {
+  visibility: visible;
+}

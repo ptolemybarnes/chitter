@@ -1,18 +1,21 @@
 $(document).ready(function(){
-  
-  $('#signinform').submit(function( event ) {
+
+  /// SIGN UP
+
+  $('#show_signupform').click(function() {
+    $('#signupform').css('visibility', 'visible');
+  });
+
+  $('section#signupform').submit(function( event ) {
     event.preventDefault();
 
     var name     =     $('#name').val();
     var password = $('#password').val();
+    var email    = $('#email').val();
+    var password_confirmation = $('#password_confirmation').val();
 
-    $.post("/api/users/authenticate", {name: name, password: password}, function( data ) {
-      $( ".user-message" ).html("Welcome back " + name + "!");
-      $('#userservices-bar').css('visibility', 'hidden');
-      }, 'json');
-  });
-
-  $('#signupbutton').click(function() {
-    $('#signupform').css('visibility', 'visible');
+    $.post('/api/users/new', {name: name, email: email, password: password, password_confirmation: password_confirmation}), function( data ) {
+      $( ".user-message" ).html("Welcome to Chitter, " + name);
+    }
   });
 });

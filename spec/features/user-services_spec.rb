@@ -1,22 +1,18 @@
-feature 'User can sign in' do
+feature 'User can sign up' do
 
-  scenario "and see a greeting message with her name", js: true do
-    user = User.create(name: "Oz", password: "secret")
+  scenario "and see a greeting message", js: true do
     visit '/'
 
-    fill_in 'name', with: "Oz"
-    fill_in 'password', with: "secret"
-    click_button 'login'
+    click_button 'Join Chitter'
 
-    expect(page).to have_content('Welcome back Oz!')
+    within '#signupform' do
+      fill_in 'name', with: "Sanda"
+      fill_in 'email', with: "sanda@gmail.com"
+      fill_in 'password', with: 'secret'
+      fill_in 'password_confirmation', with: 'secret'
+    end
+
+    expect(page).to have_content('Welcome to Chitter, Sanda!')
   end
 
 end
-
-# feature 'New user can sign up' do
-#     click_button 'sign-up'
-
-
-
-
-# end

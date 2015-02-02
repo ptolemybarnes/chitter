@@ -8,8 +8,19 @@ html
 
   body
     header
-    span class="user-message"
+    span class="error messages"
+
     div  id="userservices-bar"
-      input type="button" value="Join Chitter" id='signupbutton'
-      == slim :'user/signup'
-      == slim :'user/signin'
+
+    input type="button" id="show_signupform" value='Join Chitter'
+      section id="signupform"
+        form id="signupform"
+        | Name:
+        input type="text" id="name"/
+        | Email:
+        input type="text" id="email"/
+        | Password:
+        input type="text" id="password"/
+        | Password Confirmation:
+        input type="text" id="password_confirmation"/
+        input type="submit" id="submit"
