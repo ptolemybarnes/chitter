@@ -1,21 +1,33 @@
 $(document).ready(function(){
 
   /// SIGN UP
+  alert("jQuery Loaded");
 
-  $('#show_signupform').click(function() {
-    $('#signupform').css('visibility', 'visible');
-  });
-
-  $('section#signupform').submit(function( event ) {
+  $('form#signupform').submit(function( event ) {
     event.preventDefault();
 
-    var name     =     $('#name').val();
-    var password = $('#password').val();
-    var email    = $('#email').val();
+    var name     = $('#signupform #name').val();
+    var password = $('#signupform #password').val();
+    var email    = $('#signupform #email').val();
     var password_confirmation = $('#password_confirmation').val();
 
-    $.post('/api/users', {name: name, email: email, password: password, password_confirmation: password_confirmation}), function( data ) {
-      $( ".user-message" ).html("Welcome to Chitter, " + name);
-    }
+    alert(name)
+
+    $.post('/api/users', {name: name, email: email, password: password, password_confirmation: password_confirmation}, function( data ) {
+      $( "div.user-messages" ).html("<p>Welcome to Chitter, " + name + "</p>");
+    });
   });
+
+  $('form#signinform').submit(function( event ) {
+    event.preventDefault();
+
+
+    var name     = $('#signinform #name').val();
+    var password = $('#signinform #password').val();
+
+    $.post('/api/users/authenticate', {name: name, password: password}, function( data ) {
+      $( "div.user-messages" ).html("<p>You are signed in as " + name + " </p>");
+    });
+  });
+
 });
