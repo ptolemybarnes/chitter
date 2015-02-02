@@ -1,6 +1,6 @@
 $(document).ready(function(){
 
-  /// SIGN UP
+  /// SIGN UP / SIGNIN
   alert("jQuery Loaded");
 
   $('form#signupform').submit(function( event ) {
@@ -11,8 +11,6 @@ $(document).ready(function(){
     var email    = $('#signupform #email').val();
     var password_confirmation = $('#password_confirmation').val();
 
-    alert(name)
-
     $.post('/api/users', {name: name, email: email, password: password, password_confirmation: password_confirmation}, function( data ) {
       $( "div.user-messages" ).html("<p>Welcome to Chitter, " + name + "</p>");
     });
@@ -21,7 +19,6 @@ $(document).ready(function(){
   $('form#signinform').submit(function( event ) {
     event.preventDefault();
 
-
     var name     = $('#signinform #name').val();
     var password = $('#signinform #password').val();
 
@@ -29,5 +26,13 @@ $(document).ready(function(){
       $( "div.user-messages" ).html("<p>You are signed in as " + name + " </p>");
     });
   });
+
+  /// PEEPS
+
+  // $('#peeps').append(function() {
+  //   for()
+  // });
+
+
 
 });

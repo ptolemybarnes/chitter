@@ -8,4 +8,9 @@ class Peep
   property :peeped_at, DateTime
 
   belongs_to :user
+
+  def to_url(root)
+    root + self.id.to_s
+  end
+  
 end

@@ -9,6 +9,16 @@ describe 'Peeps API' do
     expect_json({text: "Hello, World!", author: "John"})
   end
 
+  it 'returns all peep urls in an array' do
+    peep1 = '/api/peeps/'+ create(:a_peep, text: "Hello!").id.to_s
+    peep2 = '/api/peeps/'+ create(:a_peep, text: "Bonjour!").id.to_s
+    peep3 = '/api/peeps/'+ create(:a_peep, text: "Anyonghaseyo!").id.to_s
+
+    get "/api/peeps"
+
+    expect_json(peeps: [peep1, peep2, peep3])
+  end
+
   it 'returns error message if peep does not exist' do
     bad_peep_id = "3827382738278732"
     get "/api/peeps/" + bad_peep_id

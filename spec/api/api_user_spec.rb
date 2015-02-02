@@ -16,7 +16,7 @@ describe 'User API' do
 
       get '/api/users/Bernard'
 
-      expect_json({peeps: ["http://localhost:9292/api/peeps/" + peep.id.to_s]})
+      expect_json({peeps: ["/api/peeps/" + peep.id.to_s]})
     end
 
     it 'which contains error message if user does not exist' do

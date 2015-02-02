@@ -21,11 +21,11 @@ class Chitter < Sinatra::Base
     slim :index
   end
 
-  # API
+  #### API #
 
   get '/api/users/:name' do
     if (user = User.first(:name => params[:name]))
-      peeps_url_array = user.peeps.map {|peep| "http://localhost:9292/api/peeps/" + peep.id.to_s }
+      peeps_url_array = user.peeps.map {|peep| peep.to_url('/api/peeps/') }
       
       json :name => user.name, :email => user.email, :peeps => peeps_url_array, error: nil
     else
@@ -54,6 +54,10 @@ class Chitter < Sinatra::Base
     else
       json error: "The peep requested does not exist"
     end
+  end
+
+  get '/api/peeps' do
+    json peeps: Peep.all.map {|peep| peep.to_url('/api/peeps/') }
   end
 
   post '/api/peeps' do
