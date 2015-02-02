@@ -14,7 +14,7 @@ $(document).ready(function(){
     var email    = $('#email').val();
     var password_confirmation = $('#password_confirmation').val();
 
-    $.post('/api/users/new', {name: name, email: email, password: password, password_confirmation: password_confirmation}), function( data ) {
+    $.post('/api/users', {name: name, email: email, password: password, password_confirmation: password_confirmation}), function( data ) {
       $( ".user-message" ).html("Welcome to Chitter, " + name);
     }
   });

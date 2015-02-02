@@ -33,7 +33,7 @@ class Chitter < Sinatra::Base
     end
   end
 
-  post '/api/users/new' do
+  post '/api/users' do
     unless User.signup(params).saved?
       json error: 'The passwords did not match'
     end
@@ -56,7 +56,7 @@ class Chitter < Sinatra::Base
     end
   end
 
-  post '/api/peeps/new' do
+  post '/api/peeps' do
     author = User.first(id: params[:author_id])
     Peep.create(text: params[:text], user: author)
   end

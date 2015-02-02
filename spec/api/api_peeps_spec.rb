@@ -20,7 +20,7 @@ describe 'Peeps API' do
     author    = create(:a_user)
     peep_info = {text: "Greetings!", author_id: author.id}
 
-    post "/api/peeps/new", peep_info
+    post "/api/peeps", peep_info
 
     expect(Peep.first(text: "Greetings!")).to_not eq(nil)
   end

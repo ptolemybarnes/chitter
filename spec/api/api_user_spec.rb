@@ -48,7 +48,7 @@ describe 'User API' do
     it 'to create new user' do
       tom_the_user_info = {name: "Tom", email: "tom@gmail.com", password: "secret", password_confirmation: "secret"}
 
-      post '/api/users/new', tom_the_user_info
+      post '/api/users', tom_the_user_info
 
       expect(User.first( name: "Tom")).to_not eq(nil)
     end
@@ -56,7 +56,7 @@ describe 'User API' do
     it 'and returns error message if new users passwords do not match' do
       tom_the_user = {name: "Tom", email: "tom@gmail.com", password: "secret", password_confirmation: "mistake"}
 
-      post '/api/users/new', tom_the_user
+      post '/api/users', tom_the_user
 
       expect_json({error: "The passwords did not match"})
     end
