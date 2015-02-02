@@ -8,7 +8,7 @@ $(document).ready(function(){
 
     $.post("/api/users/authenticate", {name: name, password: password}, function( data ) {
       $( ".user-message" ).html("Welcome back " + name + "!");
-      $('#signupbutton').css('visibility', 'hidden');  
+      $('#userservices-bar').css('visibility', 'hidden');
       }, 'json');
   });
 

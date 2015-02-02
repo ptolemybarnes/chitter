@@ -18,6 +18,7 @@ feature 'User doesnt see', js: true do
     click_button 'login'
 
     expect(page).to_not have_button('Join Chitter')
+    expect(page).to_not have_css('#signinform')
   end
 end
 
