@@ -1,6 +1,6 @@
-feature 'New user can sign in' do
+feature 'User can sign in' do
 
-  it "when he or she visits the site", js: true do
+  scenario "and see a greeting message with her name", js: true do
     user = User.create(name: "Oz", password: "secret")
     visit '/'
 
@@ -8,7 +8,15 @@ feature 'New user can sign in' do
     fill_in 'password', with: "secret"
     click_button 'login'
 
-
     expect(page).to have_content('Welcome back Oz!')
   end
+
 end
+
+# feature 'New user can sign up' do
+#     click_button 'sign-up'
+
+
+
+
+# end

@@ -10,4 +10,8 @@ $(document).ready(function(){
       $( ".user-message" ).html("Welcome back " + name + "!");
       }, 'json');
   });
+
+  $('#signupbutton').click(function() {
+    $('#signupform').css('visibility', 'visible');
+  });
 });
