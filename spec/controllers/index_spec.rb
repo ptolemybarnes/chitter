@@ -1,10 +1,24 @@
 require 'factory_girl'
 require './spec/factories'
 
-feature 'User sees' do
+feature 'User doesnt see', js: true do
 
-  
+  scenario 'sign-up options' do
+    visit '/'
 
+    expect(page).to_not have_content('Password Confirmation')
+  end
+
+  scenario 'sign-up options after signing in' do
+    user = User.create(name: "Oz", password: "secret")
+    visit '/'
+
+    fill_in 'name',     with: "Oz"
+    fill_in 'password', with: "secret"
+    click_button 'login'
+
+    expect(page).to_not have_button('Join Chitter')
+  end
 end
 
 feature 'User can click to see' do
@@ -16,9 +30,5 @@ feature 'User can click to see' do
 
     expect(page).to have_css('#signupform')
   end
-
-
-
-
 
 end

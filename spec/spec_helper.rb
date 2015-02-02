@@ -20,7 +20,7 @@ ENV['RACK_ENV'] = 'test'
 
 Capybara.configure do |config|
   config.app = Chitter
-  config.automatic_reload = false
+  config.ignore_hidden_elements = true
 end
 
 Capybara.javascript_driver = :webkit
