@@ -1,4 +1,7 @@
-feature 'Peeps can be viewed' do
+require 'factory_girl'
+require_relative '../factories'
+
+feature 'Peeps can be viewed', js: true do
 
   scenario 'on the homepage' do
     create(:a_peep, text: 'This is the first peep')

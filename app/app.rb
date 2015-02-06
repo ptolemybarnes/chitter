@@ -57,7 +57,7 @@ class Chitter < Sinatra::Base
   end
 
   get '/api/peeps' do
-    json peeps: Peep.all.map {|peep| peep.to_url('/api/peeps/') }
+    json :peeps => Peep.all.map {|peep| peep.to_url('/api/peeps/') }
   end
 
   post '/api/peeps' do

@@ -27,7 +27,7 @@ feature 'User can signin' do
       fill_in 'password', with: 'secret'
       click_button 'submit'
     end
-
+    
     expect(page).to have_content("You are signed in as Thomas")
   end
 end

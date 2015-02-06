@@ -29,10 +29,9 @@ $(document).ready(function(){
 
   /// PEEPS
 
-  // $('#peeps').append(function() {
-  //   for()
-  // });
-
-
+  $.get('/api/peeps', function(data) {
+    $('section#peeps').html('This is the first peep');
+  });
+  
 
 });
